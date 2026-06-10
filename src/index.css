@@ -409,7 +409,7 @@ body {
   }
 
   .details img {
-    width: 150px;
+    width: auto;
     height: auto;
   }
 
