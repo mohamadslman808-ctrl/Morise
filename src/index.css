@@ -24,13 +24,10 @@ body {
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
     Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-
   color: var(--color-text);
   background-color: var(--color-background-900);
   padding: 2.4rem;
 }
-
-/* ******* */
 
 .nav-bar {
   display: grid;
@@ -52,7 +49,7 @@ body {
 
 .box {
   width: 42rem;
-  max-width: 42rem;
+  max-width: 100%;
   background-color: var(--color-background-500);
   border-radius: 0.9rem;
   overflow: auto;
@@ -72,8 +69,6 @@ body {
   font-size: 2rem;
   padding: 4.8rem;
 }
-
-/* ******* */
 
 .logo {
   display: flex;
@@ -97,11 +92,10 @@ body {
   padding: 1.1rem 1.6rem;
   font-size: 1.8rem;
   border-radius: 0.7rem;
-  width: 40rem;
+  width: 100%;
+  max-width: 40rem;
   transition: all 0.3s;
   color: var(--color-text);
-
-  /* background-color: var(--color-background-900); */
   background-color: var(--color-primary-light);
 }
 
@@ -140,6 +134,8 @@ body {
   list-style: none;
   padding: 0.8rem 0;
   overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-background-900);
 }
 
 .list-watched {
@@ -154,7 +150,6 @@ body {
   column-gap: 2.4rem;
   font-size: 1.6rem;
   align-items: center;
-
   padding: 1.6rem 3.2rem;
   border-bottom: 1px solid var(--color-background-100);
 }
@@ -192,7 +187,6 @@ body {
 .btn-delete {
   position: absolute;
   right: 2.4rem;
-
   height: 1.8rem;
   aspect-ratio: 1;
   border-radius: 50%;
@@ -208,8 +202,6 @@ body {
 .btn-delete:hover {
   background-color: var(--color-red-dark);
 }
-
-/* ******* */
 
 .summary {
   padding: 2.2rem 3.2rem 1.8rem 3.2rem;
@@ -237,8 +229,6 @@ body {
   align-items: center;
   gap: 0.8rem;
 }
-
-/* ******* */
 
 .details {
   line-height: 1.4;
@@ -326,7 +316,6 @@ body {
   aspect-ratio: 1;
   border-radius: 50%;
   border: none;
-  /* background-color: var(--color-text); */
   background-color: #fff;
   color: var(--color-background-500);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
@@ -340,15 +329,6 @@ body {
   justify-content: center;
 }
 
-.list {
-  overflow: auto;
-
-  /* Firefox */
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-primary) var(--color-background-900);
-}
-
-/* Chrome / Edge / Safari */
 .box::-webkit-scrollbar {
   width: 10px;
 }
@@ -361,14 +341,17 @@ body {
   background-color: var(--color-primary);
   border-radius: 10px;
 }
-/* ==========================================================================
-   تنسيقات خاصة بالشاشات الصغيرة (الهواتف المحمولة)
-   ========================================================================== */
+
 @media (max-width: 768px) {
+  body {
+    padding: 1.2rem;
+  }
+
   .nav-bar {
+    display: flex;
     flex-direction: column;
-    gap: 15px;
-    padding: 15px;
+    gap: 1.5rem;
+    padding: 1.5rem;
     height: auto;
   }
 
@@ -378,43 +361,63 @@ body {
 
   .search {
     width: 100% !important;
+    max-width: 100%;
     font-size: 1.6rem;
   }
 
   .num-results {
     font-size: 1.4rem;
     text-align: center;
+    justify-self: center;
   }
 
   .main {
     flex-direction: column;
-    gap: 20px;
-    padding: 10px;
-    margin-top: 20px;
+    gap: 2rem;
+    padding: 0;
+    margin-top: 2rem;
     height: auto;
   }
 
   .box {
     width: 100% !important;
+    max-width: 100% !important;
     height: auto;
-    max-height: 500px;
-    overflow-y: auto;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .box::-webkit-scrollbar {
+    display: none;
+  }
+
+  .list {
+    overflow: visible;
+    scrollbar-width: none;
+  }
+
+  .list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .list-watched {
+    height: auto;
   }
 
   .details header {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 20px;
+    gap: 2rem;
   }
 
   .details img {
-    width: auto;
+    width: 50%;
     height: auto;
   }
 
   .details-overview {
-    padding: 10px;
+    padding: 2rem;
   }
 
   .details-overview h2 {
@@ -422,7 +425,7 @@ body {
   }
 
   .list li {
-    padding: 12px;
+    padding: 1.2rem;
     font-size: 1.4rem;
   }
 
@@ -435,71 +438,68 @@ body {
     height: 2.4rem;
     font-size: 1.2rem;
   }
+
+  .summary {
+    padding: 1.5rem !important;
+  }
+
+  .summary h2 {
+    font-size: 1.8rem !important;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .summary div {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem !important;
+    justify-items: center;
+  }
+
+  .summary p {
+    font-size: 1.3rem !important;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .details .rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.5rem !important;
+  }
+
+  .details .rating > div {
+    gap: 0.8rem !important;
+  }
+
+  .details .rating span {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+
+  .details .rating svg {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+
+  .details .rating p {
+    font-size: 1.4rem !important;
+  }
+
+  .btn-add {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.4rem;
+  }
 }
 
-.summary {
-  padding: 15px !important;
-}
-
-.summary h2 {
-  font-size: 1.8rem !important;
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-.summary div {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px !important;
-  justify-items: center;
-}
-
-.summary p {
-  font-size: 1.3rem !important;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.details .rating {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  padding: 15px !important;
-}
-
-.details .rating > div {
-  gap: 8px !important;
-}
-
-.details .rating span {
-  width: 20px !important;
-  height: 20px !important;
-}
-
-.details .rating svg {
-  width: 20px !important;
-  height: 20px !important;
-}
-
-.details .rating p {
-  font-size: 1.4rem !important;
-}
-
-.btn-add {
-  width: 100%;
-  padding: 10px;
-  font-size: 1.4rem;
-}
-/* ==========================================================================
-   تنسيقات خاصة بالشاشات الصغيرة جداً (الهواتف الضيقة أقل من 576px)
-   ========================================================================== */
 @media (max-width: 576px) {
-  
   html {
-    font-size: 55%; 
+    font-size: 55%;
   }
 
   .nav-bar .logo h1 {
@@ -507,29 +507,28 @@ body {
   }
 
   .summary div {
-    grid-template-columns: 1fr !important; 
-    gap: 8px !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.8rem !important;
     justify-content: start;
-    padding-left: 20px;
+    padding-left: 2rem;
   }
 
   .summary h2 {
     font-size: 1.5rem !important;
   }
 
-  
   .details .rating > div {
-    gap: 4px !important; /
+    gap: 0.4rem !important;
   }
 
   .details .rating span {
-    width: 16px !important; 
-    height: 16px !important;
+    width: 1.6rem !important;
+    height: 1.6rem !important;
   }
 
   .details .rating svg {
-    width: 16px !important;
-    height: 16px !important;
+    width: 1.6rem !important;
+    height: 1.6rem !important;
   }
 
   .details .rating p {
@@ -537,9 +536,8 @@ body {
     font-weight: bold;
   }
 
-  
   .list img {
-    width: 35px !important; 
+    width: 3.5rem !important;
   }
 
   .list h3 {
@@ -550,7 +548,6 @@ body {
     font-size: 1.1rem !important;
   }
 
-  
   .details section div h3 {
     font-size: 1.6rem !important;
     text-align: center;
