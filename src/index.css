@@ -493,3 +493,71 @@ body {
   padding: 10px;
   font-size: 1.4rem;
 }
+/* ==========================================================================
+   تنسيقات خاصة بالشاشات الصغيرة جداً (الهواتف الضيقة أقل من 576px)
+   ========================================================================== */
+@media (max-width: 576px) {
+  
+  html {
+    font-size: 55%; 
+  }
+
+  .nav-bar .logo h1 {
+    font-size: 1.8rem !important;
+  }
+
+  .summary div {
+    grid-template-columns: 1fr !important; 
+    gap: 8px !important;
+    justify-content: start;
+    padding-left: 20px;
+  }
+
+  .summary h2 {
+    font-size: 1.5rem !important;
+  }
+
+  
+  .details .rating > div {
+    gap: 4px !important; /
+  }
+
+  .details .rating span {
+    width: 16px !important; 
+    height: 16px !important;
+  }
+
+  .details .rating svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .details .rating p {
+    font-size: 1.2rem !important;
+    font-weight: bold;
+  }
+
+  
+  .list img {
+    width: 35px !important; 
+  }
+
+  .list h3 {
+    font-size: 1.4rem !important;
+  }
+
+  .list p {
+    font-size: 1.1rem !important;
+  }
+
+  
+  .details section div h3 {
+    font-size: 1.6rem !important;
+    text-align: center;
+  }
+
+  .details section div p {
+    font-size: 1.2rem !important;
+    line-height: 1.4;
+  }
+}
